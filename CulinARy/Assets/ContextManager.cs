@@ -39,11 +39,21 @@ public class ContextManager : MonoBehaviour
     // Activate the loading screen
     public void LoadingScreen()
     {
-        // Deactivate all contexts except the loading context (index 3)
-        for (int i = 0; i < contexts.Length; i++)
-        {
-            contexts[i].SetActive(i == 3); // Activate the loading context
-        }
+        // Activate the loading context
+        contexts[3].SetActive(true);
+
+        // Start a coroutine to delay scene switch after 3 seconds
+        StartCoroutine(DelayedSceneSwitch(3f));
+    }
+
+    // Coroutine to delay the scene switch after a specified time
+    private IEnumerator DelayedSceneSwitch(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // Switch to the new scene
+        // Replace "NewSceneName" with the name of your target scene
+        UnityEngine.SceneManagement.SceneManager.LoadScene("0-Main");
     }
 
     // Activate the context at the specified index and deactivate others
