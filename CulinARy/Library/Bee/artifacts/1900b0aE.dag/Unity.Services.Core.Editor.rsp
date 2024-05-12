@@ -113,6 +113,7 @@
 -define:ENABLE_TERRAIN
 -define:ENABLE_TILEMAP
 -define:ENABLE_TIMELINE
+-define:ENABLE_INPUT_SYSTEM
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:TEXTCORE_FONT_ENGINE_1_5_OR_NEWER
 -define:UNITY_OPERATE_SERVICE_ENABLED
@@ -489,11 +490,6 @@
 /nologo
 /RuntimeMetadataVersion:v4.0.30319
 
-/nowarn:0169
-/nowarn:0649
-/nowarn:0282
-/nowarn:1701
-/nowarn:1702
 /utf8output
 /preferreduilang:en-US
 
