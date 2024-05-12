@@ -850,7 +850,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: VUFORIA_ANDROID_SETTINGS
+    Android: VUFORIA_ANDROID_SETTINGS;USE_AUTH_EMULATOR=true
     Windows Store Apps: VUFORIA_WSA_SETTINGS
     iPhone: VUFORIA_IOS_SETTINGS
   additionalCompilerArguments: {}
@@ -958,8 +958,8 @@ PlayerSettings:
       PrivateNetworkClientServer: False
       InternetClientServer: False
       VideosLibrary: False
+      BackgroundMediaPlayback: False
       Objects3D: False
-      InternetClient: True
       RemoteSystem: False
       BlockedChatMessages: False
       PhoneCall: False
@@ -980,9 +980,9 @@ PlayerSettings:
       PointOfService: False
       RecordedCallsFolder: False
       Contacts: False
+      InternetClient: True
       Proximity: False
       CodeGeneration: False
-      BackgroundMediaPlayback: False
       EnterpriseAuthentication: False
   metroTargetDeviceFamilies:
     Desktop: False

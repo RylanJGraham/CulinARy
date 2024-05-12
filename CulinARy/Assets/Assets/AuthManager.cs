@@ -114,26 +114,32 @@ public class AuthManager : MonoBehaviour
 
     private IEnumerator Register(string _email, string _password, string _username)
     {
+        // Set USE_AUTH_EMULATOR environment variable to true
+        System.Environment.SetEnvironmentVariable("USE_AUTH_EMULATOR", "true");
+
         if (_username == "")
         {
-            //If the username field is blank show a warning
+            // If the username field is blank show a warning
             warningRegisterText.text = "Missing Username";
         }
-        else if(passwordRegisterField.text != passwordRegisterVerifyField.text)
+        else if (passwordRegisterField.text != passwordRegisterVerifyField.text)
         {
-            //If the password does not match show a warning
+            // If the password does not match show a warning
             warningRegisterText.text = "Password Does Not Match!";
         }
-        else 
+        else
         {
-            //Call the Firebase auth signin function passing the email and password
+            // Call the Firebase auth signin function passing the email and password
             Task<AuthResult> RegisterTask = auth.CreateUserWithEmailAndPasswordAsync(_email, _password);
-            //Wait until the task completes
+            // Wait until the task completes
             yield return new WaitUntil(predicate: () => RegisterTask.IsCompleted);
+
+            // Reset USE_AUTH_EMULATOR environment variable after the sign-up operation
+            System.Environment.SetEnvironmentVariable("USE_AUTH_EMULATOR", null);
 
             if (RegisterTask.Exception != null)
             {
-                //If there are errors handle them
+                // Handle sign-up errors
                 Debug.LogWarning(message: $"Failed to register task with {RegisterTask.Exception}");
                 FirebaseException firebaseEx = RegisterTask.Exception.GetBaseException() as FirebaseException;
                 AuthError errorCode = (AuthError)firebaseEx.ErrorCode;
@@ -158,23 +164,22 @@ public class AuthManager : MonoBehaviour
             }
             else
             {
-                //User has now been created
-                //Now get the result
+                // Sign-up successful
                 User = RegisterTask.Result.User;
 
                 if (User != null)
                 {
-                    //Create a user profile and set the username
-                    UserProfile profile = new UserProfile{DisplayName = _username};
+                    // Create a user profile and set the username
+                    UserProfile profile = new UserProfile { DisplayName = _username };
 
-                    //Call the Firebase auth update user profile function passing the profile with the username
+                    // Call the Firebase auth update user profile function passing the profile with the username
                     Task ProfileTask = User.UpdateUserProfileAsync(profile);
-                    //Wait until the task completes
+                    // Wait until the task completes
                     yield return new WaitUntil(predicate: () => ProfileTask.IsCompleted);
 
                     if (ProfileTask.Exception != null)
                     {
-                        //If there are errors handle them
+                        // Handle profile update errors
                         Debug.LogWarning(message: $"Failed to register task with {ProfileTask.Exception}");
                         FirebaseException firebaseEx = ProfileTask.Exception.GetBaseException() as FirebaseException;
                         AuthError errorCode = (AuthError)firebaseEx.ErrorCode;
