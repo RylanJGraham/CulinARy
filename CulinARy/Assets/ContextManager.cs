@@ -1,13 +1,17 @@
 using UnityEngine;
 using System.Collections;
+using Firebase.Auth;
 
 public class ContextManager : MonoBehaviour
 {
     public GameObject[] contexts; // Array to hold the GameObjects representing different contexts
     private int activeContextIndex = -1; // Index of the currently active context, initially set to -1
+    private FirebaseAuth auth; // Reference to FirebaseAuth for checking user authentication status
 
     private void Start()
     {
+        auth = FirebaseAuth.DefaultInstance;
+
         // Deactivate all contexts except the first one
         for (int i = 1; i < contexts.Length; i++)
         {
@@ -29,8 +33,8 @@ public class ContextManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        // Switch to the next context if available
-        if (activeContextIndex + 1 < contexts.Length)
+        // Switch to the next context if available and the user is authenticated
+        if (auth.CurrentUser != null && activeContextIndex + 1 < contexts.Length)
         {
             SwitchContext(activeContextIndex + 1);
         }
@@ -39,6 +43,13 @@ public class ContextManager : MonoBehaviour
     // Activate the context at the specified index and deactivate others
     public void SwitchContext(int index)
     {
+        // Check if the user is authenticated before allowing context switch
+        if (auth.CurrentUser == null)
+        {
+            Debug.Log("User not authenticated. Cannot switch context.");
+            return;
+        }
+
         // Check if the index is valid and different from the currently active context
         if (index >= 0 && index < contexts.Length && index != activeContextIndex)
         {
