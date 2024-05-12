@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "513113799435",
+    "project_id": "culinary-78bc6",
+    "storage_bucket": "culinary-78bc6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513113799435:android:570b462ccb8da6c2aec00e",
+        "android_client_info": {
+          "package_name": "com.PTCInc.VuforiaEngine"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2uDe3Naqrf2ncW6jJeLC2eckUZPrF_os"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513113799435:android:a390e446ed1d08a8aec00e",
+        "android_client_info": {
+          "package_name": "com.vuforia.engine.VuforiaEngine"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2uDe3Naqrf2ncW6jJeLC2eckUZPrF_os"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
