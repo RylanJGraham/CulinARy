@@ -5208,10 +5208,10 @@ MonoBehaviour:
   passwordLoginField: {fileID: 500042359}
   warningLoginText: {fileID: 1535424001}
   confirmLoginText: {fileID: 879897619}
-  usernameRegisterField: {fileID: 0}
+  usernameRegisterField: {fileID: 1214893905}
   emailRegisterField: {fileID: 265905030}
-  passwordRegisterField: {fileID: 0}
-  passwordRegisterVerifyField: {fileID: 0}
+  passwordRegisterField: {fileID: 1626364681}
+  passwordRegisterVerifyField: {fileID: 553721929}
   warningRegisterText: {fileID: 1688545939}
 --- !u!4 &1284546299
 Transform:
