@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Profile.unity
     guid: ab6fe338b7bc3164484f8cf56d4694b6
+  - enabled: 1
+    path: Assets/Scenes/CookBook.unity
+    guid: 0f4284df09c119546b2c8244ea286a59
+  - enabled: 1
+    path: Assets/Scenes/Settings.unity
+    guid: 5580bdb1b520c9b48919cf90325ceaad
   m_configObjects: {}
