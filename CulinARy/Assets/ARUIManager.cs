@@ -25,7 +25,7 @@ public class ARUIManager : MonoBehaviour
     private void OnObserverStatusChanged(ObserverBehaviour behaviour, TargetStatus status)
     {
         Debug.Log("Target Status Changed: " + status.Status);
-        if (status.Status == Status.TRACKED || status.Status == Status.EXTENDED_TRACKED)
+        if (status.Status == Status.TRACKED)
         {
             OnTargetFound();
         }
@@ -46,7 +46,7 @@ public class ARUIManager : MonoBehaviour
     {
         Debug.Log("Target Lost");
         popupWindow.SetActive(false);
-        detailedMessage.SetActive(false);
+        //detailedMessage.SetActive(false);           // Commenting this, the More Info PopUp window will remain opened even if the Image Target is lost.
         moreInfoButton.gameObject.SetActive(false);
     }
 
