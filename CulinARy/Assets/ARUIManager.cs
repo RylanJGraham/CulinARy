@@ -12,9 +12,22 @@ public class ARUIManager : MonoBehaviour
     // Content Panels
     public GameObject[] contentPanels;
 
+    // Audio Source for Background Music
+    private AudioSource backgroundMusicSource;
+
+    // Audio Source for Sound Effects
+    public AudioSource soundEffectSource;
+    public AudioClip buttonClickSound; // Assign the click sound effect in the Inspector
+
+    // Pitch variation range
+    public float minPitch = 0.75f;
+    public float maxPitch = 1.25f;
+
     void Start()
     {
         mObserverBehaviour = GetComponent<ObserverBehaviour>();
+        backgroundMusicSource = GetComponent<AudioSource>();
+        
         if (mObserverBehaviour)
         {
             mObserverBehaviour.OnTargetStatusChanged += OnObserverStatusChanged;
@@ -63,18 +76,24 @@ public class ARUIManager : MonoBehaviour
         
         // Show the first content panel by default when detailed message is shown
         ShowContentPanel(0);
+
+        PlaySoundEffect();
     }
 
     public void CloseDetailedMessage()
     {
         Debug.Log("Close Detailed Message");
         detailedMessage.SetActive(false);
+
+        PlaySoundEffect();
     }
 
     public void CloseMoreInfoButton()
     {
         Debug.Log("Close More Info Button");
         moreInfoButton.gameObject.SetActive(false);
+
+        PlaySoundEffect();
     }
 
     public void ShowContentPanel(int index)
@@ -82,6 +101,17 @@ public class ARUIManager : MonoBehaviour
         for (int i = 0; i < contentPanels.Length; i++)
         {
             contentPanels[i].SetActive(i == index);
+        }
+
+        PlaySoundEffect();
+    }
+
+    private void PlaySoundEffect()
+    {
+        if (soundEffectSource != null && buttonClickSound != null)
+        {
+            soundEffectSource.pitch = Random.Range(minPitch, maxPitch);
+            soundEffectSource.PlayOneShot(buttonClickSound);
         }
     }
 }
