@@ -9,6 +9,9 @@ public class ARUIManager : MonoBehaviour
     public GameObject detailedMessage;
     public Button moreInfoButton;
 
+    // Content Panels
+    public GameObject[] contentPanels;
+
     void Start()
     {
         mObserverBehaviour = GetComponent<ObserverBehaviour>();
@@ -20,6 +23,9 @@ public class ARUIManager : MonoBehaviour
         popupWindow.SetActive(false);
         detailedMessage.SetActive(false);
         moreInfoButton.gameObject.SetActive(false); // Ensure the button is hidden at start
+
+        // Initially show the first content panel
+        ShowContentPanel(0);
     }
 
     private void OnObserverStatusChanged(ObserverBehaviour behaviour, TargetStatus status)
@@ -54,6 +60,9 @@ public class ARUIManager : MonoBehaviour
     {
         Debug.Log("Show Detailed Message");
         detailedMessage.SetActive(true);
+        
+        // Show the first content panel by default when detailed message is shown
+        ShowContentPanel(0);
     }
 
     public void CloseDetailedMessage()
@@ -66,6 +75,14 @@ public class ARUIManager : MonoBehaviour
     {
         Debug.Log("Close More Info Button");
         moreInfoButton.gameObject.SetActive(false);
+    }
+
+    public void ShowContentPanel(int index)
+    {
+        for (int i = 0; i < contentPanels.Length; i++)
+        {
+            contentPanels[i].SetActive(i == index);
+        }
     }
 }
 
