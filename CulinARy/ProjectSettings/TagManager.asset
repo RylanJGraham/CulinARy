@@ -3,12 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Knife
+  - Fruit
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Knife
   - Water
   - UI
   - 
