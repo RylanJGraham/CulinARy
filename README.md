@@ -36,6 +36,24 @@ Once you have all the necessary material, you need to carefully follow these ste
 
 Now you are ready to try the app by yourself with your own Android device! If you have more doubts about the Setup process, you can check [this documentation](https://docs.unity3d.com/Manual/UnityRemote5.html) and watch [this video](https://youtu.be/iCXwaehzRFQ?si=iEYqz2QH0_4UBKgE).
 
+## Image Target Markers
+To try the AR 3D model scanning functionalities, you must scan the following Markers. You can download, print, and show them on screen!
+
+![Starter Dish AR Marker](https://raw.githubusercontent.com/RylanJGraham/CulinARy/main/Helper%20Files/Bravas_Marker.jpg)
+**_Starter Dish AR Marker_**
+
+***
+
+![Main Dish AR Marker](https://raw.githubusercontent.com/RylanJGraham/CulinARy/main/Helper%20Files/Hamburger_Marker.jpg)
+**_Main Dish AR Marker_**
+
+***
+
+![Dessert AR Marker](https://raw.githubusercontent.com/RylanJGraham/CulinARy/main/Helper%20Files/Coulant_Marker.jpg)
+**_Dessert AR Marker_**
+
+***
+
 ## Developers
 - Rylan Graham [@RylanJGraham](https://github.com/RylanJGraham)
 - Adrià Pons [@AdriaPm](https://github.com/AdriaPm)
