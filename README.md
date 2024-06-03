@@ -3,6 +3,10 @@
 ## App Description
 CulinARy is an Augmented Reality application destined for the restaurant business so the clients can take a look at the menu in 3D. With this app, once a card is scanned various pop-ups will appear and the user will be able to see the dishes that they may want to consume in the establishment.
 
+### CulinARy App Demo Video
+[![CulinARy App Demo Video](https://img.youtube.com/vi/2bjx3PON7Os/0.jpg)](https://www.youtube.com/watch?v=2bjx3PON7Os)
+
+
 ## App Goals
 - Enhance the experiences in restaurants
 - Make the waiting time entertaining for everyone
