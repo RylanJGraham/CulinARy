@@ -2,14 +2,36 @@ using UnityEngine;
 
 public class RandomSpawner : MonoBehaviour
 {
-    public GameObject[] prefabs; // Array of prefabs to spawn
+    public GameObject[] bravasPrefabs; // Array of bravas prefabs
+    public GameObject[] burgerPrefabs; // Array of burger prefabs
+    public GameObject[] coulantPrefabs; // Array of coulant prefabs
     public float spawnInterval = 2f; // Time in seconds between spawns
     public Vector3 spawnAreaSize = new Vector3(10f, 10f, 10f); // Size of the area within which to spawn prefabs
 
+    private GameObject[] prefabs;
     private float timer;
 
     void Start()
     {
+        string selectedPrefab = PlayerPrefs.GetString("SelectedPrefab");
+
+        switch (selectedPrefab)
+        {
+            case "Bravas":
+                prefabs = bravasPrefabs;
+                break;
+            case "Burger":
+                prefabs = burgerPrefabs;
+                break;
+            case "Coulant":
+                prefabs = coulantPrefabs;
+                break;
+            default:
+                Debug.LogWarning("No valid prefab selection found. Defaulting to Bravas.");
+                prefabs = bravasPrefabs;
+                break;
+        }
+
         timer = spawnInterval; // Initialize the timer with the spawn interval
     }
 
