@@ -9,6 +9,7 @@ public class DestroyableGameObject : MonoBehaviour
     private bool destroyed = false;
     private float timer = 0f;
     private static Slider scoreSlider; // Changed to static to ensure one instance shared across all objects
+    private static Text scoreText; // Static to ensure one instance shared across all objects
 
     void Start()
     {
@@ -26,6 +27,22 @@ public class DestroyableGameObject : MonoBehaviour
             else
             {
                 Debug.LogError("No Slider found in the scene for DestroyableGameObject.");
+            }
+        }
+
+        // Check if the Text reference has been assigned
+        if (scoreText == null)
+        {
+            // Find the Text component in the scene and assign it
+            scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
+            if (scoreText != null)
+            {
+                scoreText.text = "0";
+                Debug.Log("Score Text found and initialized.");
+            }
+            else
+            {
+                Debug.LogError("No Text found in the scene for DestroyableGameObject.");
             }
         }
     }
@@ -68,6 +85,7 @@ public class DestroyableGameObject : MonoBehaviour
         if (scoreSlider != null)
         {
             scoreSlider.value += pointValue;
+            UpdateScoreText();
             Debug.Log("Points added. Current score: " + scoreSlider.value);
         }
     }
@@ -77,7 +95,16 @@ public class DestroyableGameObject : MonoBehaviour
         if (scoreSlider != null)
         {
             scoreSlider.value -= pointValue;
+            UpdateScoreText();
             Debug.Log("Points subtracted. Current score: " + scoreSlider.value);
+        }
+    }
+
+    void UpdateScoreText()
+    {
+        if (scoreText != null)
+        {
+            scoreText.text = " " + scoreSlider.value;
         }
     }
 }
